@@ -1,4 +1,6 @@
-import Head from 'next/head'
+import Head from 'next/head';
+
+import { QuestionCard } from '../components';
 
 export default function Home() {
   return (
@@ -12,6 +14,8 @@ export default function Home() {
       <main>
         <div className='welcome-screen'>
           <h1>DroonkGame</h1>
+
+          <QuestionCard />
         </div>
       </main>
     </div>
