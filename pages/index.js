@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Logo } from "../components";
+import { Logo } from "/components";
 import Link from "next/link";
 export default function Home() {
   return (
