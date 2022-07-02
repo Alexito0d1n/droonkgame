@@ -1,4 +1,8 @@
 $opensans-font-path: "../fonts/opensans";
+$urbanist-font-path: "../fonts/urbanist";
+
+
+// Open Sans
 
 @font-face {
   src: url("#{$opensans-font-path}/OpenSans-Light.ttf") format("ttf");
@@ -34,3 +38,43 @@ $opensans-font-path: "../fonts/opensans";
   font-family: "OpenSans";
   font-weight: 800;
 }
+
+// Urbanist
+
+@font-face {
+    src: url("#{$urbanist-font-path}/Urbanist-Light.ttf") format("ttf");
+  
+    font-family: "Urbanist";
+    font-weight: 300;
+  }
+  
+  @font-face {
+    src: url("#{$urbanist-font-path}/Urbanist-Regular.ttf") format("ttf");
+  
+    font-family: "Urbanist";
+    font-weight: 400;
+  }
+  
+  @font-face {
+    src: url("#{$urbanist-font-path}/Urbanist-SemiBold.ttf") format("ttf");
+  
+    font-family: "Urbanist";
+    font-weight: 600;
+  }
+  
+  @font-face {
+    src: url("#{$urbanist-font-path}/Urbanist-Bold.ttf") format("ttf");
+  
+    font-family: "Urbanist";
+    font-weight: 700;
+  }
+  
+  @font-face {
+    src: url("#{$urbanist-font-path}/Urbanist-ExtraBold.ttf") format("ttf");
+  
+    font-family: "Urbanist";
+    font-weight: 800;
+  }
+
+  // To Do: Remove Google Fonts dependency by selfhosting the fonts
+  @import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,400;1,600&display=swap');

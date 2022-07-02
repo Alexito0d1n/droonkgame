@@ -3,8 +3,8 @@ function Logo({ children }) {
     return (
         <div className="logo">
             <Image
-                height={800*0.4}
-                width={800*0.4}
+                height={261*0.4}
+                width={575*0.4}
                 layout="intrinsic"
                 className={"logo"}
                 src="/assets/logo.png"
