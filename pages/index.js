@@ -1,9 +1,11 @@
 import Head from 'next/head'
-import Link from "next/link";
-
+import {Logo} from "../components";
+import Link from "next/link"
 export default function Home() {
   return (
+
     <div>
+
       <Head>
         <title>DroonkGame</title>
         <meta name="description" content="A mi me están grabando" />
@@ -13,14 +15,15 @@ export default function Home() {
       <main>
         <div className='welcome-screen'>
           <h1>DroonkGame</h1>
+          <Logo className="logo-container" />
           <div className="buttons">
           <Link href="/rules">
           <button
-              className="input-button">Normas </button>
+              className="input-buttons">Normas </button>
           </Link>
           <Link href="/play">
             <button
-              className="input-button">Empieza a jugar </button>
+              className="input-buttons">Empieza a jugar </button>
           </Link>
 </div>        
 </div>
