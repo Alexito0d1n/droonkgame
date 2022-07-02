@@ -1,5 +1,9 @@
-.welcome-screen{
-    @include flexCenter(column);
+.welcome-screen {
     width: 100%;
-    height: 100%;
+    @include flexCenter(column);
+    
+    .buttons{
+        @include flexCenter(column);
+    }
+
 }
