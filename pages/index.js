@@ -1,8 +1,11 @@
 import Head from 'next/head'
+import {Logo} from "../components";
 
 export default function Home() {
   return (
+
     <div>
+
       <Head>
         <title>DroonkGame</title>
         <meta name="description" content="A mi me están grabando" />
@@ -12,6 +15,7 @@ export default function Home() {
       <main>
         <div className='welcome-screen'>
           <h1>DroonkGame</h1>
+          <Logo/>
           <div className="buttons">
           <button
               className="input-button">Normas </button>
