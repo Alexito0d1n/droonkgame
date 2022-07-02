@@ -14,7 +14,7 @@ export default function Home() {
 
       <main>
         <div className='welcome-screen'>
-          <h1>DroonkGame</h1>
+           
           <Logo className="logo-container" />
           <div className="buttons">
           <Link href="/rules">
