@@ -1,3 +1,5 @@
 .play-container {
     @include flexCenter(column);
+
+    background-color: $backgroundColor;
 }

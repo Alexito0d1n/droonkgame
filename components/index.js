@@ -1,5 +1,5 @@
 import Logo from "./Logo";
 import Rules from "./Rules";
-import QuestionCard from "./questionCard";
+import QuestionCard from "./QuestionCard";
 
-export {Logo, QuestionCard, Rules};
+export { Logo, QuestionCard, Rules };
