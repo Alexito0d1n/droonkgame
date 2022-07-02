@@ -1,7 +1,13 @@
+// General
 @import "./variables";
 @import "./functions";
 @import "./fonts";
 @import "./app";
+
+// Pages
 @import "./welcome";
+@import "./play";
+
+// Components
 @import "./questionCard";
 @import "./logo";
