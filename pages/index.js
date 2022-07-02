@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,11 +14,14 @@ export default function Home() {
         <div className='welcome-screen'>
           <h1>DroonkGame</h1>
           <div className="buttons">
+          <Link href="/rules">
           <button
               className="input-button">Normas </button>
+          </Link>
+          <Link href="/play">
             <button
               className="input-button">Empieza a jugar </button>
-
+          </Link>
 </div>        
 </div>
       </main>
