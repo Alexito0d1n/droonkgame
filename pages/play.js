@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useEffect } from "react";
 
-import { QuestionCard } from "/components";
+import { QuestionCard, Button } from "/components";
 
 export default function Play() {
   const [questions, setQuestions] = useState([]);
@@ -36,6 +36,15 @@ export default function Play() {
         <div className="play-container">
           <h1>DroonkGame</h1>
           {currentQuestion ? <QuestionCard question={currentQuestion} /> : null}
+          <div className="play-buttons">
+            <div className="row">
+              <Button>Reroll</Button>
+              <Button>Reduce</Button>
+            </div>
+            <div className="row">
+              <Button>Next</Button>
+            </div>
+          </div>
         </div>
       </main>
     </div>

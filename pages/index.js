@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { Logo } from "/components";
+import { Logo, Button } from "/components";
 import Link from "next/link";
 export default function Home() {
   return (
@@ -18,13 +18,9 @@ export default function Home() {
               <h1>the game</h1>
             </div>
           </div>
-          <div className="buttons">
-            <Link href="/rules">
-              <button className="input-buttons">NORMAS</button>
-            </Link>
-            <Link href="/play">
-              <button className="input-buttons">EMPIEZA A JUGAR</button>
-            </Link>
+          <div className="buttons-container">
+            <Button href="/rules">NORMAS</Button>
+            <Button href="/play">EMPIEZA A JUGAR</Button>
           </div>
         </div>
       </main>
