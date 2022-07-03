@@ -1,3 +1,4 @@
 import supabase from "./supabase";
+import random from "./random";
 
-export { supabase };
+export { supabase, random };

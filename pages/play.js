@@ -1,36 +1,21 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { useRouter } from "next/router";
+
+import AppContext from "/context/AppContext";
 
 import { QuestionCard, Button } from "/components";
 
 export default function Play() {
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answered, setAnswered] = useState([]);
+  const router = useRouter();
+  const { currentQuestion, getNextQuestion } = useContext(AppContext);
 
+  // Send to "/" if no question loaded
   useEffect(() => {
-    get_questions();
-  }, []);
-
-  const get_questions = async () => {
-    let response = await fetch("/api/questions/all", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    let questions = await response.json();
-    setQuestions(questions);
-    setCurrentQuestion(0);
-  };
-
-  const next_question = () => {
-    console.log(currentQuestion, questions.length);
-    if (currentQuestion < questions.length - 1) {
-      console.log("TRUE");
-      let nextCurrentQuestion = currentQuestion + 1;
-      setCurrentQuestion(nextCurrentQuestion);
+    if (currentQuestion === null) {
+      router.push("/");
     }
-  };
+  }, [currentQuestion]);
 
   return (
     <div>
@@ -43,9 +28,8 @@ export default function Play() {
       <main>
         <div className="play-container">
           <h1>DroonkGame</h1>
-          {questions.length > 0 &&
-          (currentQuestion !== null || currentQuestion !== undefined) ? (
-            <QuestionCard question={questions[currentQuestion]} />
+          {currentQuestion !== null && currentQuestion !== undefined ? (
+            <QuestionCard question={currentQuestion} />
           ) : null}
           <div className="play-buttons">
             <div className="row">
@@ -53,7 +37,7 @@ export default function Play() {
               <Button>Reduce</Button>
             </div>
             <div className="row">
-              <Button action={() => next_question()}>Next</Button>
+              <Button action={getNextQuestion}>Next</Button>
             </div>
           </div>
         </div>

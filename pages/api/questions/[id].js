@@ -12,7 +12,7 @@ export default async function handler(req, res) {
     // console.log(data);
     // console.log(error);
 
-    res.status(200).json(data);
+    res.status(200).json(data[0]);
   } else {
     // Handle any other HTTP method: not allowed
     res.status(405).end();
