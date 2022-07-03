@@ -8,7 +8,7 @@ function Rules({ children }) {
           layout="intrinsic"
           className={"piruleta"}
           src="/assets/piruletas.png"
-          alt="Piruleta"
+          alt="Rules"
         />
     </div>
   );
