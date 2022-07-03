@@ -20,7 +20,8 @@ export default function Home() {
           </div>
           <div className="buttons-container">
             <Button href="/rules">NORMAS</Button>
-            <Button href="/config">EMPIEZA A JUGAR</Button>
+            <Button href="/config">PARTIDA PERSONALIZADA</Button>
+            <Button href="/play">EMPIEZA A JUGAR</Button>
           </div>
         </div>
       </main>
