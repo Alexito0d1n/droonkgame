@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Logo, Button } from "/components";
-import Link from "next/link";
+//import Link from "next/link";
 export default function Home() {
   return (
     <div>
@@ -20,7 +20,7 @@ export default function Home() {
           </div>
           <div className="buttons-container">
             <Button href="/rules">NORMAS</Button>
-            <Button href="/play">EMPIEZA A JUGAR</Button>
+            <Button href="/config">EMPIEZA A JUGAR</Button>
           </div>
         </div>
       </main>
