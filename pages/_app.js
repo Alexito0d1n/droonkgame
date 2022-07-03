@@ -58,13 +58,14 @@ function MyApp({ Component, pageProps }) {
   };
 
   const getDowngradedQuestion = async (previousLevelId) => {
-    let allowedLevels = [...Array(previousLevelId).keys()];
-    allowedLevels.shift();
+    // Downgrade to any easier level
+    // let allowedLevels = [...Array(previousLevelId).keys()];
+    // allowedLevels.shift();
     let response = await fetch(`/api/questions/random`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        allowedLevels,
+        allowedLevels: [previousLevelId - 1],
       }),
     });
     let question = await response.json();
