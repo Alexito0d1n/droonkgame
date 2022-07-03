@@ -1,6 +1,7 @@
 export default function QuestionCard(props) {
   console.log(props?.question);
   const {
+    id,
     question,
     penalty_name,
     penalty_description,

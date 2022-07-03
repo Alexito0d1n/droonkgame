@@ -5,7 +5,7 @@ import { QuestionCard, Button } from "/components";
 
 export default function Play() {
   const [questions, setQuestions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(null);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answered, setAnswered] = useState([]);
 
   useEffect(() => {
@@ -19,9 +19,17 @@ export default function Play() {
     });
 
     let questions = await response.json();
-    console.log(questions);
     setQuestions(questions);
-    setCurrentQuestion(questions[3]);
+    setCurrentQuestion(0);
+  };
+
+  const next_question = () => {
+    console.log(currentQuestion, questions.length);
+    if (currentQuestion < questions.length - 1) {
+      console.log("TRUE");
+      let nextCurrentQuestion = currentQuestion + 1;
+      setCurrentQuestion(nextCurrentQuestion);
+    }
   };
 
   return (
@@ -35,14 +43,17 @@ export default function Play() {
       <main>
         <div className="play-container">
           <h1>DroonkGame</h1>
-          {currentQuestion ? <QuestionCard question={currentQuestion} /> : null}
+          {questions.length > 0 &&
+          (currentQuestion !== null || currentQuestion !== undefined) ? (
+            <QuestionCard question={questions[currentQuestion]} />
+          ) : null}
           <div className="play-buttons">
             <div className="row">
               <Button>Reroll</Button>
               <Button>Reduce</Button>
             </div>
             <div className="row">
-              <Button>Next</Button>
+              <Button action={() => next_question()}>Next</Button>
             </div>
           </div>
         </div>
