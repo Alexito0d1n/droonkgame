@@ -7,9 +7,8 @@ export default async function handler(req, res) {
 
     const { data, error } = await supabase.from("questions_view").select();
 
-    console.log(data);
-
-    console.log(error);
+    // console.log(data);
+    // console.log(error);
 
     res.status(200).json(data);
   } else {

@@ -5,15 +5,12 @@ export default async function handler(req, res) {
     console.log(req.body);
     // const { level, category, language } = req.body
 
-    const { data, error, status, count } = await supabase
-      .from("questions_view")
-      .select("*", { count: "exact", head: true });
+    const { data, error } = await supabase.from("language").select();
 
-    console.log("Questions", count);
+    // console.log(data);
+    // console.log(error);
 
-    console.log(error);
-
-    res.status(200).json(count);
+    res.status(200).json(data);
   } else {
     // Handle any other HTTP method: not allowed
     res.status(405).end();

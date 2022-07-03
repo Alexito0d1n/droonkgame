@@ -13,7 +13,7 @@ export default function Play() {
   }, []);
 
   const get_questions = async () => {
-    let response = await fetch("/api/get_questions", {
+    let response = await fetch("/api/questions/all", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     });
