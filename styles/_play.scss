@@ -12,14 +12,9 @@
     .play-buttons {
         margin-bottom: 24px;
         max-width: 300px;
-        width: 70%;
+        width: 74%;
         height: 100px;
-        @include flexCenter(column);
+        @include flexCenter(row);
         justify-content: space-between;
-
-        .row {
-            width: 100%;
-            @include flexCenter(row);
-        }
     }
 }

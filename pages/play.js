@@ -8,7 +8,8 @@ import { QuestionCard, Button } from "/components";
 
 export default function Play() {
   const router = useRouter();
-  const { currentQuestion, getNextQuestion } = useContext(AppContext);
+  const { currentQuestion, getNextQuestion, getDowngradedQuestion } =
+    useContext(AppContext);
 
   // Send to "/" if no question loaded
   useEffect(() => {
@@ -32,13 +33,13 @@ export default function Play() {
             <QuestionCard question={currentQuestion} />
           ) : null}
           <div className="play-buttons">
-            <div className="row">
-              <Button>Reroll</Button>
-              <Button>Reduce</Button>
-            </div>
-            <div className="row">
-              <Button action={getNextQuestion}>Next</Button>
-            </div>
+            <Button
+              action={() => getDowngradedQuestion(currentQuestion.level_id)}
+              disabled={currentQuestion.level_name === "easy"}
+            >
+              Downgrade
+            </Button>
+            <Button action={getNextQuestion}>Next</Button>
           </div>
         </div>
       </main>

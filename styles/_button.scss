@@ -34,4 +34,14 @@
             inset 0 -0.188em $buttonPushedShade3,
             0 .063em $buttonInsetWhiteShadow;
     }
+
+    &:disabled {
+        background-color: gray;
+        box-shadow: none;
+        border: 3px solid $buttonDisabledBorder;
+    }
+
+    // &[disabled] {
+    //     background-color: #CCC;
+    // }
 }

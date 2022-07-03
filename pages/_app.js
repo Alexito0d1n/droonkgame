@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }) {
     return candidateId;
   };
 
+  // ToDo: Change 0.5 to 0.25 buffer size when many questions
   const updateBuffer = (newId) => {
     let _answeredBuffer = answeredBuffer;
     if (answeredBuffer.length >= Math.ceil(questionsNumber * 0.5)) {
@@ -37,7 +38,6 @@ function MyApp({ Component, pageProps }) {
       _answeredBuffer.shift();
     }
     _answeredBuffer.push(newId);
-    console.log("Buffer", _answeredBuffer);
     setAnsweredBuffer(_answeredBuffer);
   };
 
@@ -52,10 +52,23 @@ function MyApp({ Component, pageProps }) {
   };
 
   const getNextQuestion = async () => {
-    console.log("A");
     let nextId = getRandomQuestionId();
     updateBuffer(nextId);
     await getQuestion(nextId);
+  };
+
+  const getDowngradedQuestion = async (previousLevelId) => {
+    let allowedLevels = [...Array(previousLevelId).keys()];
+    allowedLevels.shift();
+    let response = await fetch(`/api/questions/random`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        allowedLevels,
+      }),
+    });
+    let question = await response.json();
+    setCurrentQuestion(question);
   };
 
   const getQuestionsCount = async () => {
@@ -76,6 +89,7 @@ function MyApp({ Component, pageProps }) {
         questionsNumber: questionsNumber,
         getQuestion: getQuestion,
         getNextQuestion: getNextQuestion,
+        getDowngradedQuestion: getDowngradedQuestion,
         getQuestionsCount: getQuestionsCount,
       }}
     >

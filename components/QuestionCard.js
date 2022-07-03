@@ -1,5 +1,4 @@
 export default function QuestionCard(props) {
-  console.log(props?.question);
   const {
     id,
     question,
@@ -7,6 +6,7 @@ export default function QuestionCard(props) {
     penalty_description,
     penalty_amount,
     level_name,
+    level_id,
     category_name,
     category_description,
     language_code,
