@@ -9,14 +9,21 @@ function MyApp({ Component, pageProps }) {
   const [currentQuestion, setCurrentQuestion] = useState(null);
   const [answeredBuffer, setAnsweredBuffer] = useState([]);
   const [questionsNumber, setQuestionsNumber] = useState(null);
+  const [filters, setFilters] = useState({
+    allowedLevels: [],
+    allowedTopics: [],
+    allowedCategories: [],
+    allowedLanguages: [],
+  });
+  const [customGame, setCustomGame] = useState(false);
 
   useEffect(() => {
     getQuestionsCount();
   }, []);
 
   useEffect(() => {
-    questionsNumber ? getNextQuestion() : null;
-  }, [questionsNumber]);
+    questionsNumber ? getNextQuestion(customGame) : null;
+  }, [questionsNumber, customGame]);
 
   // ToDo: Looking for an optimal solution
   const getRandomQuestionId = () => {
@@ -51,10 +58,33 @@ function MyApp({ Component, pageProps }) {
     setCurrentQuestion(question);
   };
 
-  const getNextQuestion = async () => {
-    let nextId = getRandomQuestionId();
-    updateBuffer(nextId);
-    await getQuestion(nextId);
+  const getFilteredQuestion = async () => {
+    let response = await fetch(`/api/questions/random`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...filters, notAllowedIds: answeredBuffer }),
+    });
+    try {
+      let question = await response.json();
+      setCurrentQuestion(question);
+    } catch {
+      alert("No more questions with your custom filters, setting normal mode");
+      setCustomGame(false);
+    }
+  };
+
+  const getNextQuestion = async (customGame) => {
+    if (customGame === false) {
+      console.log("Getting normal question");
+      let nextId = getRandomQuestionId();
+      await getQuestion(nextId);
+      updateBuffer(nextId);
+    } else {
+      console.log("Getting filtered question");
+      console.log("Buffer", answeredBuffer);
+      await getFilteredQuestion();
+      if (currentQuestion) updateBuffer(currentQuestion.id);
+    }
   };
 
   const getDowngradedQuestion = async (previousLevelId) => {
@@ -85,6 +115,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <AppContext.Provider
       value={{
+        filters: filters,
+        setFilters: setFilters,
+        customGame,
+        setCustomGame,
         answeredBuffer: answeredBuffer,
         currentQuestion: currentQuestion,
         questionsNumber: questionsNumber,

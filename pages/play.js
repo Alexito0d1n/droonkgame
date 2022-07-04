@@ -8,12 +8,16 @@ import { QuestionCard, Button } from "/components";
 
 export default function Play() {
   const router = useRouter();
-  const { currentQuestion, getNextQuestion, getDowngradedQuestion } =
-    useContext(AppContext);
+  const {
+    currentQuestion,
+    getNextQuestion,
+    getDowngradedQuestion,
+    customGame,
+  } = useContext(AppContext);
 
   // Send to "/" if no question loaded
   useEffect(() => {
-    if (currentQuestion === null) {
+    if (currentQuestion === null || currentQuestion === undefined) {
       router.push("/");
     }
   }, [currentQuestion]);
@@ -35,11 +39,11 @@ export default function Play() {
           <div className="play-buttons">
             <Button
               action={() => getDowngradedQuestion(currentQuestion.level_id)}
-              disabled={currentQuestion.level_name === "easy"}
+              disabled={currentQuestion?.level_name === "easy"}
             >
               Downgrade
             </Button>
-            <Button action={getNextQuestion}>Next</Button>
+            <Button action={() => getNextQuestion(customGame)}>Next</Button>
           </div>
         </div>
       </main>
