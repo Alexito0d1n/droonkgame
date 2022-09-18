@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  droonkgame:
+    image: droonk-game
+    build: ./
+    restart: unless-stopped
+    container_name: droonk
+    environment:
+      - SUPABASE_URL: <supabase_url>
+      - SUPABASE_ANON: <supabase_anon>
