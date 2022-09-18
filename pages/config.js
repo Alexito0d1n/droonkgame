@@ -136,7 +136,7 @@ export default function Config() {
                 onChange={() => handleTopicClick(topic)}
               />
               <label className="label-column">
-                <h4>{topic.name}</h4>
+                <h4>{topic.name[0].toUpperCase() + topic.name.substring(1)}</h4>
                 <p>{topic.description}</p>
               </label>
             </div>
@@ -156,7 +156,7 @@ export default function Config() {
                 onChange={() => handleCategoriesClick(category)}
               />
               <label className="label-column">
-                <h4>{category.name}</h4>
+                <h4>{category.name[0].toUpperCase() + category.name.substring(1)}</h4>
                 <p>{category.description}</p>
               </label>
             </div>
@@ -176,7 +176,7 @@ export default function Config() {
                 onChange={() => handleLevelsClick(level)}
               />
               <label className="label-column">
-                <h4>{level.name}</h4>
+                <h4>{level.name[0].toUpperCase() + level.name.substring(1)}</h4>
                 <p>{level.description}</p>
               </label>
             </div>
@@ -196,7 +196,7 @@ export default function Config() {
                 onChange={() => handleLanguagesClick(language)}
               />
               <label className="label-column">
-                <h4>{language.name}</h4>
+                <h4>{language.name[0].toUpperCase() + language.name.substring(1)}</h4>
               </label>
             </div>
           ))}

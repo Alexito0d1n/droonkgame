@@ -1,16 +1,17 @@
 .config-container {
 
-    height: 100vh;
+    height: 100%;
     width: 100%;
-    overflow-y: scroll;
+    // overflow-y: scroll;
 
     .config-main {
         background-color: $backgroundColor;
 
+        height: 100%;
         @include flexCenter(column);
         justify-content: flex-start;
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 24px;
+        padding-bottom: 24px;
 
         .checkbox-config-container {
             width: 80%;
@@ -25,7 +26,8 @@
 
             .input-checkbox {
                 @include flexCenter(row);
-                max-width: 320px;
+                justify-items: flex-end;
+                width: 290px;
                 align-items: flex-start;
                 margin-bottom: 12px;
                 background-color: $secondaryBackground;
@@ -33,13 +35,20 @@
                 padding-top: 12px;
                 padding-bottom:12px;
                 padding-left: 12px;
-                padding-right: 12px;
+                padding-right: 14px;
+
+                input {
+                    height: 16px;
+                    width: 16px;
+                    flex: 1;
+                }
 
                 .label-column {
+                    flex: 10;
                     @include flexCenter(column);
                     align-items: flex-start;
                     // max-height: 40px;
-                    padding-left: 12px;
+                    margin-left: 12px;
                     p,
                     h4 {
                         margin: 0;
