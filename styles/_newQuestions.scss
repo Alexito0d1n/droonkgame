@@ -39,12 +39,17 @@ form {
   }
 
   select {
-    width: 100%;
-    background-color: $cardBackground;
-    border: 8px;
-    border-radius: 4px;
-    // Styles for the select element
-    // Apply border color based on the selected level
+    @include flexCenter(row);
+    justify-items: flex-end;
+    width: 290px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    background-color: $secondaryBackground;
+    border-radius: 8px;
+    padding-top: 12px;
+    padding-bottom:12px;
+    padding-left: 12px;
+    padding-right: 14px;
     
   
   

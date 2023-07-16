@@ -104,7 +104,7 @@ function Form() {
           </select>
         </div>
         <div>
-          <label>Categories:</label>
+          <label>Category:</label>
           <select value={category} onChange={handleCategoryChange}>
             <option value="Challenge">Challenge</option>
             <option value="Never Have I Ever">Never Have I Ever</option>
@@ -117,7 +117,7 @@ function Form() {
           </select>
         </div>
         <div>
-          <label>Penalties:</label>
+          <label>Penalty:</label>
           <select value={penalty} onChange={handlePenaltyChange}>
             <option value="2 sips">2 sips</option>
             <option value="4 sips">4 sips</option>
@@ -130,7 +130,7 @@ function Form() {
           </select>
         </div>
         <div>
-          <label>Topics:</label>
+          <label>Topic:</label>
           <select value={topic} onChange={handleTopicChange}>
             <option value="hot">Hot</option>
             <option value="normalitas">Normalitas</option>
