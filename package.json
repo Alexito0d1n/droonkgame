@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^1.35.4",
+    "axios": "^1.4.0",
+    "axos": "^0.0.1",
     "next": "12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",

@@ -1,0 +1,124 @@
+.welcome-screen {
+    width: 100%;
+    height: 100%;
+    @include flexCenter(column);
+    background-color: $backgroundColor;
+
+    
+
+}
+// Form.scss
+
+$easyBorder: #fcbf49;
+$mediumBorder: #f77f00;
+$hardBorder: #d62828;
+$deathBorder: #b134eb;
+
+$formBorderSize: 4px;
+$formTextareaHeight: 200px;
+
+.form-container {
+  // Styles for the container
+}
+
+form {
+  // Styles for the form
+
+  label {
+    // Styles for the labels
+  }
+
+  select,
+  textarea {
+    // Common styles for select and textarea
+    width: 100%;
+    border-width: $formBorderSize;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+
+  select {
+    width: 100%;
+    background-color: $cardBackground;
+    border: 8px;
+    border-radius: 4px;
+    // Styles for the select element
+    // Apply border color based on the selected level
+    
+  
+  
+  }
+
+  textarea {
+    height: $formTextareaHeight;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 240px;
+    
+    border-radius: 20px;
+
+    @include flexCenter(column);
+    justify-content: space-between;
+
+    // Shadow
+    box-shadow: 5px 6px 22px -9px rgba(0, 0, 0, 0.61);
+
+    background-color: $cardBackground;
+  }
+
+
+
+
+
+  .button-container{
+    @include flexCenter(column);
+    margin-top: 10px;
+  }
+  .button {
+    display: inline-block;
+
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 3px solid $buttonBorder;
+    border-radius: 14px;
+    background-color: $buttonBackground;
+    box-shadow:
+        0 .375em .313em -0.313em $buttonShadow,
+        inset 0 .063em $buttonInsetWhiteShadow,
+        inset 0 -0.188em $buttonInsetBlackShadow;
+    color: $buttonText;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 20px #000;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    &:hover {
+        background-color: $buttonHoverBackground;
+        box-shadow:
+            0 .125em $buttonInsetWhiteShadow,
+            inset 0 .063em $buttonInsetWhiteShadow,
+            inset 0 -0.188em $buttonHoverShade1;
+    }
+
+    &:active {
+        box-shadow:
+            inset 0 0 1.094em $buttonPushedShade1,
+            inset 0 .063em $buttonPushedShade2,
+            inset 0 -0.188em $buttonPushedShade3,
+            0 .063em $buttonInsetWhiteShadow;
+    }
+
+    &:disabled {
+        background-color: gray;
+        box-shadow: none;
+        border: 3px solid $buttonDisabledBorder;
+    }
+
+    // &[disabled] {
+    //     background-color: #CCC;
+    // }
+}
+}

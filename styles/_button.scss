@@ -18,7 +18,8 @@
     cursor: pointer;
     font-weight: 600;
     font-size: 1rem;
-
+    margin-top: 5px;
+    margin-bottom: 10px;
     &:hover {
         background-color: $buttonHoverBackground;
         box-shadow:

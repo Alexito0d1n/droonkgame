@@ -22,6 +22,7 @@ export default function Home() {
             <Button href="/rules">NORMAS</Button>
             <Button href="/config">PARTIDA PERSONALIZADA</Button>
             <Button href="/play">EMPIEZA A JUGAR</Button>
+            <Button href="/newQuestions">Añade tus preguntas</Button>
           </div>
         </div>
       </main>
