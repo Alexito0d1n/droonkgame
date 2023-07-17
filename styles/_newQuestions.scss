@@ -17,16 +17,12 @@ $deathBorder: #b134eb;
 $formBorderSize: 4px;
 $formTextareaHeight: 200px;
 
-.form-container {
-  // Styles for the container
+h2{
+  margin-top: 100px;
 }
 
 form {
-  // Styles for the form
-
-  label {
-    // Styles for the labels
-  }
+ 
 
   select,
   textarea {
@@ -71,10 +67,6 @@ form {
 
     background-color: $cardBackground;
   }
-
-
-
-
 
   .button-container{
     @include flexCenter(column);

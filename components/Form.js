@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+
+import { createClient } from '@supabase/supabase-js'
+
+// Create a single supabase client for interacting with your database
+const supabase = createClient('https://xyzcompany.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVldGptanRkb3NjeXd2Y3p1d3djIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTY3Njk3NzMsImV4cCI6MTk3MjM0NTc3M30.N2t5Vp_bI8aRcCQiEWuWP7Dm4-wv2X1qpvAW9tfJkRQ')
 
 function Form() {
   const [question, setQuestion] = useState("");
@@ -8,7 +12,7 @@ function Form() {
   const [penalty, setPenalty] = useState("1 sip");
   const [topic, setTopic] = useState("hot");
   const [languages, setLanguages] = useState("spanish");
-  const apiKey = "tu-api-key"; 
+  const [notification, setNotification] = useState("");
 
   const handleQuestionChange = (event) => {
     setQuestion(event.target.value);
@@ -44,31 +48,28 @@ function Form() {
     const formData = {
       question,
       level,
-      category,
       penalty,
+      category,
       topic,
       languages,
     };
 
     try {
-      await axios.post(
-        "https://https://eetjmjtdoscywvczuwwc.supabase.co/rest/v1/new_questions",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer your-supabase-auth-token",
-          },
-        }
-      );
+      const { error } = await supabase
+          .from('new_questions')
+              .insert( formData)
+      if (error) {
+        throw error;
+      }
 
       // Form data saved successfully
+      setNotification("Your question has been sent!");
       setQuestion("");
       setLevel("easy");
       setCategory("Challenge");
       setPenalty("1 sip");
-      setTopic("hot");
-      setLanguages("spanish");
+      setTopic("Hot");
+      setLanguages("Spanish");
     } catch (error) {
       // Handle error
     }
@@ -104,7 +105,7 @@ function Form() {
           </select>
         </div>
         <div>
-          <label>Category:</label>
+          <label>Categories:</label>
           <select value={category} onChange={handleCategoryChange}>
             <option value="Challenge">Challenge</option>
             <option value="Never Have I Ever">Never Have I Ever</option>
@@ -117,7 +118,7 @@ function Form() {
           </select>
         </div>
         <div>
-          <label>Penalty:</label>
+          <label>Penalties:</label>
           <select value={penalty} onChange={handlePenaltyChange}>
             <option value="2 sips">2 sips</option>
             <option value="4 sips">4 sips</option>
@@ -130,7 +131,7 @@ function Form() {
           </select>
         </div>
         <div>
-          <label>Topic:</label>
+          <label>Topics:</label>
           <select value={topic} onChange={handleTopicChange}>
             <option value="hot">Hot</option>
             <option value="normalitas">Normalitas</option>
@@ -151,7 +152,7 @@ function Form() {
             style={{ borderColor }}
           />
         </div>
-        <div className="button-container">
+        <div className= "button-container">
         <button className="button" type="submit" disabled={!question.trim()}>
           Agregar
         </button>

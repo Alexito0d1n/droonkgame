@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Logo} from "../components";
+import {Form} from "../components";
 
 function NewQuestions() {
   return (
