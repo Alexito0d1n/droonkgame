@@ -12,7 +12,6 @@ function Form() {
   const [penalty, setPenalty] = useState("1 sip");
   const [topic, setTopic] = useState("hot");
   const [languages, setLanguages] = useState("spanish");
-  const [notification, setNotification] = useState("");
 
   const handleQuestionChange = (event) => {
     setQuestion(event.target.value);
@@ -63,7 +62,6 @@ function Form() {
       }
 
       // Form data saved successfully
-      setNotification("Your question has been sent!");
       setQuestion("");
       setLevel("easy");
       setCategory("Challenge");
