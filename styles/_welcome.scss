@@ -6,7 +6,7 @@
 
 
     .logo-container {
-        flex: 7;
+        flex: 6;
         @include flexCenter(column);
 
         .welcome-logo {
@@ -17,10 +17,11 @@
 
     .buttons-container {
         @include flexCenter(column);
-        flex: 3;
+        flex: 4;
         height: 100%;
-        max-height: 200px;
+        max-height: 260px;
         margin-bottom: 20px;
+        
     }
 
 }

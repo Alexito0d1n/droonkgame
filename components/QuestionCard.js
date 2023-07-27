@@ -42,6 +42,7 @@ export default function QuestionCard(props) {
       <div className="type-container">
         <span>{category_name ?? "No category"}</span>
       </div>
+      
     </div>
   );
 }
