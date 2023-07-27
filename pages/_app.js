@@ -15,12 +15,25 @@ function MyApp({ Component, pageProps }) {
     allowedLanguages: [],
   });
   const [customGame, setCustomGame] = useState(false);
+  const [levels, setLevels] = useState([]);
+  const [topics, setTopics] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [languages, setLanguages] = useState([]);
+  const [penalties, setPenalties] = useState([]);
 
   useEffect(() => {
     getNextQuestion(customGame);
   }, [customGame]);
 
-  // ToDo: Change 0.5 to 0.25 buffer size when many questions
+  useEffect(() => {
+    getTopics();
+    getCategories();
+    getLevels();
+    getLanguages();
+    getPenalties();
+  }, []);
+
+  // TODO: Change 0.5 to 0.25 buffer size when many questions
   const updateBuffer = (id) => {
     console.log("Id", id);
     let _answeredBuffer = answeredBuffer;
@@ -97,6 +110,55 @@ function MyApp({ Component, pageProps }) {
     setCurrentQuestion(question);
   };
 
+  const getTopics = async () => {
+    let response = await fetch("/api/topics/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let topics = await response.json();
+    setTopics(topics);
+  };
+
+  const getCategories = async () => {
+    let response = await fetch("/api/categories/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let categories = await response.json();
+    setCategories(categories);
+  };
+
+  const getLevels = async () => {
+    let response = await fetch("/api/levels/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let levels = await response.json();
+    setLevels(levels);
+  };
+
+  const getLanguages = async () => {
+    let response = await fetch("/api/languages/all", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+
+    let languages = await response.json();
+    setLanguages(languages);
+  };
+
+  const getPenalties = async () => {
+    let response = await fetch("/api/penalties/all", {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    });
+    let penalties = await response.json();
+    setPenalties(penalties);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -104,6 +166,11 @@ function MyApp({ Component, pageProps }) {
         setFilters: setFilters,
         customGame,
         setCustomGame,
+        levels,
+        topics,
+        categories,
+        languages,
+        penalties,
         answeredBuffer: answeredBuffer,
         currentQuestion: currentQuestion,
         getQuestion: getQuestion,

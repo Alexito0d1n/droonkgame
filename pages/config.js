@@ -7,23 +7,19 @@ import AppContext from "/context/AppContext";
 
 export default function Config() {
   const router = useRouter();
-  const { setFilters, setCustomGame } = useContext(AppContext);
-  const [levels, setLevels] = useState([]);
-  const [topics, setTopics] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [languages, setLanguages] = useState([]);
+  const {
+    setFilters,
+    setCustomGame,
+    levels,
+    topics,
+    categories,
+    languages,
+  } = useContext(AppContext);
 
   const [allowedLevels, setAllowedLevels] = useState([]);
   const [allowedTopics, setAllowedTopics] = useState([]);
   const [allowedCategories, setAllowedCategories] = useState([]);
   const [allowedLanguages, setAllowedLanguages] = useState([]);
-
-  useEffect(() => {
-    getTopics();
-    getCategories();
-    getLevels();
-    getLanguages();
-  }, []);
 
   useEffect(() => {
     setFilters({
@@ -34,45 +30,6 @@ export default function Config() {
     });
   }, [allowedLevels, allowedCategories, allowedLanguages, allowedTopics]);
 
-  const getTopics = async () => {
-    let response = await fetch("/api/topics/all", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    let topics = await response.json();
-    setTopics(topics);
-  };
-
-  const getCategories = async () => {
-    let response = await fetch("/api/categories/all", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    let categories = await response.json();
-    setCategories(categories);
-  };
-
-  const getLevels = async () => {
-    let response = await fetch("/api/levels/all", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    let levels = await response.json();
-    setLevels(levels);
-  };
-
-  const getLanguages = async () => {
-    let response = await fetch("/api/languages/all", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    let languages = await response.json();
-    setLanguages(languages);
-  };
 
   const handleTopicClick = (topic) => {
     let newTopics = allowedTopics;

@@ -1,121 +1,69 @@
-.welcome-screen {
-    width: 100%;
-    height: 100%;
+.new-question-container {
     @include flexCenter(column);
-    background-color: $backgroundColor;
+    margin-bottom: 50px;
+    margin-top: 24px;
 
-    
+    .new-question-form {
 
-}
-// Form.scss
+      select,
+      textarea {
+        // Common styles for select and textarea
+        width: 100%;
+        border-width: 4px;
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 4px;
+      }
 
-$easyBorder: #fcbf49;
-$mediumBorder: #f77f00;
-$hardBorder: #d62828;
-$deathBorder: #b134eb;
+      select {
+        @include flexCenter(row);
+        justify-items: flex-end;
+        width: 290px;
+        align-items: flex-start;
+        margin-bottom: 12px;
+        background-color: $secondaryBackground;
+        border-radius: 8px;
+        padding-top: 12px;
+        padding-bottom:12px;
+        padding-left: 12px;
+        padding-right: 14px;
 
-$formBorderSize: 4px;
-$formTextareaHeight: 200px;
+      }
 
-h2{
-  margin-top: 100px;
-}
+      textarea {
+        height: 200px;
+        padding: 20px;
+        margin-top: 20px;
+        max-width: 240px;
 
-form {
- 
+        border-radius: 20px;
 
-  select,
-  textarea {
-    // Common styles for select and textarea
-    width: 100%;
-    border-width: $formBorderSize;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 4px;
-  }
+        @include flexCenter(column);
+        justify-content: space-between;
 
-  select {
-    @include flexCenter(row);
-    justify-items: flex-end;
-    width: 290px;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    background-color: $secondaryBackground;
-    border-radius: 8px;
-    padding-top: 12px;
-    padding-bottom:12px;
-    padding-left: 12px;
-    padding-right: 14px;
-    
-  
-  
-  }
+        // Shadow
+        box-shadow: 5px 6px 22px -9px rgba(0, 0, 0, 0.61);
 
-  textarea {
-    height: $formTextareaHeight;
-    padding: 20px;
-    margin-top: 20px;
-    max-width: 240px;
-    
-    border-radius: 20px;
+        background-color: $cardBackground;
+      }
 
-    @include flexCenter(column);
-    justify-content: space-between;
-
-    // Shadow
-    box-shadow: 5px 6px 22px -9px rgba(0, 0, 0, 0.61);
-
-    background-color: $cardBackground;
-  }
-
-  .button-container{
-    @include flexCenter(column);
-    margin-top: 10px;
-  }
-  .button {
-    display: inline-block;
-
-    padding: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border: 3px solid $buttonBorder;
-    border-radius: 14px;
-    background-color: $buttonBackground;
-    box-shadow:
-        0 .375em .313em -0.313em $buttonShadow,
-        inset 0 .063em $buttonInsetWhiteShadow,
-        inset 0 -0.188em $buttonInsetBlackShadow;
-    color: $buttonText;
-    text-decoration: none;
-    text-transform: uppercase;
-    text-shadow: 20px #000;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    &:hover {
-        background-color: $buttonHoverBackground;
-        box-shadow:
-            0 .125em $buttonInsetWhiteShadow,
-            inset 0 .063em $buttonInsetWhiteShadow,
-            inset 0 -0.188em $buttonHoverShade1;
     }
 
-    &:active {
-        box-shadow:
-            inset 0 0 1.094em $buttonPushedShade1,
-            inset 0 .063em $buttonPushedShade2,
-            inset 0 -0.188em $buttonPushedShade3,
-            0 .063em $buttonInsetWhiteShadow;
+    .button-container {
+        margin-top: 20px;
+        @include flexCenter(row);
     }
 
-    &:disabled {
-        background-color: gray;
-        box-shadow: none;
-        border: 3px solid $buttonDisabledBorder;
+    .easy {
+        border: 8px solid $easyBorder;
     }
-
-    // &[disabled] {
-    //     background-color: #CCC;
-    // }
-}
+    .medium {
+        border: 8px solid $mediumBorder;
+    }
+    .hard {
+        border: 8px solid $hardBorder;
+    }
+    .death {
+        border: 8px solid $deathBorder;
+    }
 }

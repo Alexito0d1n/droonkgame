@@ -21,7 +21,7 @@ function RulesHome() {
   return (
     <div>
       <main>
-        <div className="welcome-screen">
+        <div className="rules-screen">
           <h2>Instrucciones del juego:</h2>
           <Rules ruleNumber={currentRule} />
           <div className="buttons">

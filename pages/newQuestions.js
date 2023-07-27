@@ -4,12 +4,10 @@ import {Form} from "../components";
 function NewQuestions() {
   return (
     <div>
-        <main>
-      <div className="welcome-screen">
-          
-            <Form />
+      <main>
+        <div className="new-question-container">
+          <Form />
         </div>
-        
       </main>
     </div>
   );
