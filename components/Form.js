@@ -13,6 +13,15 @@ function Form() {
   const [language, setLanguage] = useState(languages[0]?.id ?? 1);
 
 
+  const resetForm = () => {
+    setQuestion("");
+    setLevel(levels[0]?.id ?? 1);
+    setCategory(categories[0]?.id ?? 1);
+    setPenalty(penalties[0]?.id ?? 1);
+    setTopic(topics[0]?.id ?? 1);
+    setLanguage(languages[0]?.id ?? 1);
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -39,6 +48,7 @@ function Form() {
       let resJSON = await res.json();
 
       if (!resJSON?.error) {
+        resetForm();
         alert("Your card was saved successfully and will be reviewd shortly!")
       } else {
         alert(resJSON.error)
